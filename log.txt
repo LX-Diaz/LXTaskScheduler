@@ -1,0 +1,285 @@
+12/20/2023 @ 09:32:16 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 802, 'main': 'Clouds', 'description': 'scattered clouds', 'icon': '03n'}], 'base': 'stations', 'main': {'temp': 288.6, 'feels_like': 288.29, 'temp_min': 287.01, 'temp_max': 289.9, 'pressure': 1026, 'humidity': 80}, 'visibility': 10000, 'wind': {'speed': 5.14, 'deg': 50}, 'clouds': {'all': 40}, 'dt': 1703125639, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 09:35:14 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 802, 'main': 'Clouds', 'description': 'scattered clouds', 'icon': '03n'}], 'base': 'stations', 'main': {'temp': 288.6, 'feels_like': 288.29, 'temp_min': 287.01, 'temp_max': 289.9, 'pressure': 1026, 'humidity': 80}, 'visibility': 10000, 'wind': {'speed': 5.14, 'deg': 50}, 'clouds': {'all': 40}, 'dt': 1703125639, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 09:37:03 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 802, 'main': 'Clouds', 'description': 'scattered clouds', 'icon': '03n'}], 'base': 'stations', 'main': {'temp': 288.6, 'feels_like': 288.29, 'temp_min': 287.01, 'temp_max': 289.9, 'pressure': 1026, 'humidity': 80}, 'visibility': 10000, 'wind': {'speed': 5.14, 'deg': 50}, 'clouds': {'all': 40}, 'dt': 1703125639, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 09:42:38 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 802, 'main': 'Clouds', 'description': 'scattered clouds', 'icon': '03n'}], 'base': 'stations', 'main': {'temp': 288.5, 'feels_like': 288.21, 'temp_min': 287.01, 'temp_max': 289.8, 'pressure': 1026, 'humidity': 81}, 'visibility': 10000, 'wind': {'speed': 5.14, 'deg': 50}, 'clouds': {'all': 40}, 'dt': 1703126439, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 09:45:57 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 802, 'main': 'Clouds', 'description': 'scattered clouds', 'icon': '03n'}], 'base': 'stations', 'main': {'temp': 288.5, 'feels_like': 288.21, 'temp_min': 287.01, 'temp_max': 289.8, 'pressure': 1026, 'humidity': 81}, 'visibility': 10000, 'wind': {'speed': 5.14, 'deg': 50}, 'clouds': {'all': 40}, 'dt': 1703126439, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 09:53:08 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 288.4, 'feels_like': 288.1, 'temp_min': 286.66, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 81}, 'visibility': 10000, 'wind': {'speed': 5.14, 'deg': 50}, 'clouds': {'all': 0}, 'dt': 1703126903, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 09:54:08 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 288.4, 'feels_like': 288.1, 'temp_min': 286.66, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 81}, 'visibility': 10000, 'wind': {'speed': 5.14, 'deg': 50}, 'clouds': {'all': 0}, 'dt': 1703126903, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 09:55:08 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 288.4, 'feels_like': 288.1, 'temp_min': 286.66, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 81}, 'visibility': 10000, 'wind': {'speed': 5.14, 'deg': 50}, 'clouds': {'all': 0}, 'dt': 1703126903, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 09:55:45 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 288.4, 'feels_like': 288.1, 'temp_min': 286.66, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 81}, 'visibility': 10000, 'wind': {'speed': 5.14, 'deg': 50}, 'clouds': {'all': 0}, 'dt': 1703126903, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 09:58:45 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 288.4, 'feels_like': 288.1, 'temp_min': 286.66, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 81}, 'visibility': 10000, 'wind': {'speed': 5.14, 'deg': 50}, 'clouds': {'all': 0}, 'dt': 1703126903, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 09:58:50 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 288.4, 'feels_like': 288.1, 'temp_min': 286.66, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 81}, 'visibility': 10000, 'wind': {'speed': 5.14, 'deg': 50}, 'clouds': {'all': 0}, 'dt': 1703126903, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:00:40 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 288.4, 'feels_like': 288.1, 'temp_min': 286.66, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 81}, 'visibility': 10000, 'wind': {'speed': 5.14, 'deg': 50}, 'clouds': {'all': 0}, 'dt': 1703126903, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:02:03 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 288.4, 'feels_like': 288.1, 'temp_min': 286.66, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 81}, 'visibility': 10000, 'wind': {'speed': 5.14, 'deg': 50}, 'clouds': {'all': 0}, 'dt': 1703126903, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:03:02 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 288.4, 'feels_like': 288.1, 'temp_min': 286.66, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 81}, 'visibility': 10000, 'wind': {'speed': 5.14, 'deg': 50}, 'clouds': {'all': 0}, 'dt': 1703126903, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:03:57 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 288.35, 'feels_like': 288.04, 'temp_min': 286.66, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 81}, 'visibility': 10000, 'wind': {'speed': 5.14, 'deg': 50}, 'clouds': {'all': 0}, 'dt': 1703127551, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:14:25 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 288.1, 'feels_like': 287.82, 'temp_min': 286.58, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 40}, 'clouds': {'all': 0}, 'dt': 1703128466, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:21:42 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 288.1, 'feels_like': 287.82, 'temp_min': 286.58, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 40}, 'clouds': {'all': 0}, 'dt': 1703128466, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:22:28 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 288.1, 'feels_like': 287.82, 'temp_min': 286.58, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 40}, 'clouds': {'all': 0}, 'dt': 1703128466, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:22:45 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 288.1, 'feels_like': 287.82, 'temp_min': 286.58, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 40}, 'clouds': {'all': 0}, 'dt': 1703128466, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:23:41 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 288.1, 'feels_like': 287.82, 'temp_min': 286.58, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 40}, 'clouds': {'all': 0}, 'dt': 1703128466, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:25:10 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.99, 'feels_like': 287.7, 'temp_min': 286.45, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129111, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:25:35 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.99, 'feels_like': 287.7, 'temp_min': 286.45, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129111, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:26:34 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.99, 'feels_like': 287.7, 'temp_min': 286.45, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129111, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:27:35 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.99, 'feels_like': 287.7, 'temp_min': 286.45, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129111, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:27:57 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.99, 'feels_like': 287.7, 'temp_min': 286.45, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129111, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:33:12 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.99, 'feels_like': 287.7, 'temp_min': 286.45, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129111, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:33:28 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.99, 'feels_like': 287.7, 'temp_min': 286.45, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129111, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:33:37 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.99, 'feels_like': 287.7, 'temp_min': 286.45, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129111, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:34:04 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.99, 'feels_like': 287.7, 'temp_min': 286.45, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129111, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:35:04 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.99, 'feels_like': 287.7, 'temp_min': 286.45, 'temp_max': 289.38, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129111, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:36:04 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.89, 'feels_like': 287.59, 'temp_min': 286.29, 'temp_max': 289.24, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129765, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:37:05 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.89, 'feels_like': 287.59, 'temp_min': 286.29, 'temp_max': 289.24, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129765, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:38:04 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.89, 'feels_like': 287.59, 'temp_min': 286.29, 'temp_max': 289.24, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129765, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:39:04 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.89, 'feels_like': 287.59, 'temp_min': 286.29, 'temp_max': 289.24, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129765, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:40:05 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.89, 'feels_like': 287.59, 'temp_min': 286.29, 'temp_max': 289.24, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129765, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:41:04 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.89, 'feels_like': 287.59, 'temp_min': 286.29, 'temp_max': 289.24, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129765, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:42:05 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.89, 'feels_like': 287.59, 'temp_min': 286.29, 'temp_max': 289.24, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129765, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:43:05 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.89, 'feels_like': 287.59, 'temp_min': 286.29, 'temp_max': 289.24, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129765, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:44:05 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.89, 'feels_like': 287.59, 'temp_min': 286.29, 'temp_max': 289.24, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129765, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:45:05 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.89, 'feels_like': 287.59, 'temp_min': 286.29, 'temp_max': 289.24, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129765, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:46:05 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.89, 'feels_like': 287.59, 'temp_min': 286.29, 'temp_max': 289.24, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 60}, 'clouds': {'all': 0}, 'dt': 1703129765, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:47:06 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 803, 'main': 'Clouds', 'description': 'broken clouds', 'icon': '04n'}], 'base': 'stations', 'main': {'temp': 287.73, 'feels_like': 287.41, 'temp_min': 286.29, 'temp_max': 288.79, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 40}, 'clouds': {'all': 75}, 'dt': 1703130401, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:48:05 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 803, 'main': 'Clouds', 'description': 'broken clouds', 'icon': '04n'}], 'base': 'stations', 'main': {'temp': 287.73, 'feels_like': 287.41, 'temp_min': 286.29, 'temp_max': 288.79, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 40}, 'clouds': {'all': 75}, 'dt': 1703130401, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:49:06 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 803, 'main': 'Clouds', 'description': 'broken clouds', 'icon': '04n'}], 'base': 'stations', 'main': {'temp': 287.73, 'feels_like': 287.41, 'temp_min': 286.29, 'temp_max': 288.79, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 40}, 'clouds': {'all': 75}, 'dt': 1703130401, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:50:06 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 803, 'main': 'Clouds', 'description': 'broken clouds', 'icon': '04n'}], 'base': 'stations', 'main': {'temp': 287.73, 'feels_like': 287.41, 'temp_min': 286.29, 'temp_max': 288.79, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 40}, 'clouds': {'all': 75}, 'dt': 1703130401, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:50:46 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 803, 'main': 'Clouds', 'description': 'broken clouds', 'icon': '04n'}], 'base': 'stations', 'main': {'temp': 287.73, 'feels_like': 287.41, 'temp_min': 286.29, 'temp_max': 288.79, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 40}, 'clouds': {'all': 75}, 'dt': 1703130401, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 10:51:25 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 803, 'main': 'Clouds', 'description': 'broken clouds', 'icon': '04n'}], 'base': 'stations', 'main': {'temp': 287.73, 'feels_like': 287.41, 'temp_min': 286.29, 'temp_max': 288.79, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 40}, 'clouds': {'all': 75}, 'dt': 1703130401, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 11:14:49 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 803, 'main': 'Clouds', 'description': 'broken clouds', 'icon': '04n'}], 'base': 'stations', 'main': {'temp': 287.48, 'feels_like': 287.14, 'temp_min': 285.93, 'temp_max': 288.69, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 4.92, 'deg': 50}, 'clouds': {'all': 75}, 'dt': 1703131927, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 11:15:51 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 803, 'main': 'Clouds', 'description': 'broken clouds', 'icon': '04n'}], 'base': 'stations', 'main': {'temp': 287.48, 'feels_like': 287.14, 'temp_min': 285.93, 'temp_max': 288.69, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 4.92, 'deg': 50}, 'clouds': {'all': 75}, 'dt': 1703131927, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 11:16:05 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 803, 'main': 'Clouds', 'description': 'broken clouds', 'icon': '04n'}], 'base': 'stations', 'main': {'temp': 287.48, 'feels_like': 287.14, 'temp_min': 285.93, 'temp_max': 288.69, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 4.92, 'deg': 50}, 'clouds': {'all': 75}, 'dt': 1703131927, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 11:16:27 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 803, 'main': 'Clouds', 'description': 'broken clouds', 'icon': '04n'}], 'base': 'stations', 'main': {'temp': 287.48, 'feels_like': 287.14, 'temp_min': 285.93, 'temp_max': 288.69, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 4.92, 'deg': 50}, 'clouds': {'all': 75}, 'dt': 1703131927, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 11:18:07 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 803, 'main': 'Clouds', 'description': 'broken clouds', 'icon': '04n'}], 'base': 'stations', 'main': {'temp': 287.48, 'feels_like': 287.14, 'temp_min': 285.93, 'temp_max': 288.69, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 4.92, 'deg': 50}, 'clouds': {'all': 75}, 'dt': 1703131927, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 11:19:07 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 803, 'main': 'Clouds', 'description': 'broken clouds', 'icon': '04n'}], 'base': 'stations', 'main': {'temp': 287.48, 'feels_like': 287.14, 'temp_min': 285.93, 'temp_max': 288.69, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 4.92, 'deg': 50}, 'clouds': {'all': 75}, 'dt': 1703131927, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 11:19:50 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 803, 'main': 'Clouds', 'description': 'broken clouds', 'icon': '04n'}], 'base': 'stations', 'main': {'temp': 287.48, 'feels_like': 287.14, 'temp_min': 285.93, 'temp_max': 288.69, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 4.92, 'deg': 50}, 'clouds': {'all': 75}, 'dt': 1703131927, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 11:20:50 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 803, 'main': 'Clouds', 'description': 'broken clouds', 'icon': '04n'}], 'base': 'stations', 'main': {'temp': 287.48, 'feels_like': 287.14, 'temp_min': 285.93, 'temp_max': 288.69, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 4.92, 'deg': 50}, 'clouds': {'all': 75}, 'dt': 1703131927, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 11:24:37 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 803, 'main': 'Clouds', 'description': 'broken clouds', 'icon': '04n'}], 'base': 'stations', 'main': {'temp': 287.48, 'feels_like': 287.14, 'temp_min': 285.93, 'temp_max': 288.69, 'pressure': 1026, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 4.92, 'deg': 50}, 'clouds': {'all': 75}, 'dt': 1703131927, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+
+12/20/2023 @ 11:25:36 PM
+-----------------------------------------------
+ Updated weather data:
+{'coord': {'lon': -82.4584, 'lat': 27.9475}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}], 'base': 'stations', 'main': {'temp': 287.49, 'feels_like': 287.15, 'temp_min': 285.9, 'temp_max': 288.69, 'pressure': 1027, 'humidity': 83}, 'visibility': 10000, 'wind': {'speed': 5.14, 'deg': 50}, 'clouds': {'all': 0}, 'dt': 1703132583, 'sys': {'type': 2, 'id': 2078520, 'country': 'US', 'sunrise': 1703074577, 'sunset': 1703111902}, 'timezone': -18000, 'id': 4174757, 'name': 'Tampa', 'cod': 200}
+

@@ -9,6 +9,7 @@ import tkinter as tk
 from tkinter import ttk, scrolledtext
 from tkinter import *
 from tkinter.ttk import *
+import sv_ttk
 from winsound import *
 from time import *
 import configparser
@@ -16,8 +17,7 @@ import twilio
 import openpyxl
 import smtplib
 import sys
-import weather
-import sv_ttk
+from Modules import weather
 
 
 class Clock_Scheduler(tk.Tk):
@@ -27,23 +27,33 @@ class Clock_Scheduler(tk.Tk):
         self.padding = 5
         # Initialize imported Classes and instantiate variables
         self.config = configparser.ConfigParser()
-        self.config.read('timeconfig.ini')
+        self.config.read('config.ini')
         self.log = open('log.txt', 'a')
 
+        # Create program variables
         self.total_seconds = tk.IntVar()
-
         self.TimerStatus = False
         self.PomodoroStatus = False
+        self.Test_Data = [[1, "Catch up on account", "12/21/23", "9:00 pm.",
+                           "Make sure to close the account for November and update December"],
+                          [2, "Ultra-scan appointment", "12/21/23", "9:00 pm.",
+                           "Find out when your appointment is scheduled for."]]
 
         # Create Main Window
         self.resizable(False, False)
         self.attributes('-fullscreen', False)
-        # self.geometry('800x480')
         self.grid_columnconfigure(7, weight=3)
         self.grid_rowconfigure(7, weight=3)
         self.title('LX_Clock')
-        sv_ttk.set_theme("light")
+
+        # Set the Style of the app
+        sv_ttk.set_theme(self.config['OPTIONS']['theme'])
+        style = ttk.Style()
+
+        # Initiate external classes/modules and run necessary functions
         self.weather = weather.WeatherData()
+        #self.load_Data(self.config['OPTIONS']['data'])
+
 
         # Define Frames
         self.ClockFrame = ttk.LabelFrame(self, text='Time and Date')
@@ -53,9 +63,9 @@ class Clock_Scheduler(tk.Tk):
         self.MessageFrame = ttk.Frame(self)
 
         # Define Widgets
-        # =========================================
+        # ===============================================================
         # ###Clock Frame
-        # =========================================
+        # ===============================================================
         self.weatherDataFontSize = 10
         self.clock = ttk.Label(self.ClockFrame, foreground="light blue", font=("Arial", 10), width=15)
         self.date = ttk.Label(self.ClockFrame, foreground="light blue", font=("Arial", 10), width=15)
@@ -67,9 +77,9 @@ class Clock_Scheduler(tk.Tk):
         self.time()
         self.weather_data()
 
-        # =========================================
+        # ===============================================================
         # ###Timer
-        # =========================================
+        # ===============================================================
         self.Timer_Clock_Inner_Frame = ttk.Frame(
             self.TimerFrame)  # To house the clock and reset button withing the entire Timer frame
         self.hours_field = ttk.Entry(self.Timer_Clock_Inner_Frame, width=3)
@@ -85,35 +95,42 @@ class Clock_Scheduler(tk.Tk):
         self.start_toggle_button = ttk.Button(self.Timer_Clock_Inner_Frame, text="⏯", command=self.startTimer)
         self.progress_bar = ttk.Progressbar(self.TimerFrame, mode="indeterminate")
 
-        # =========================================
+        # ===============================================================
         # ###Pomodoro
-        # =========================================
+        # ===============================================================
         self.pom_minutes = ttk.Entry(self.PomodoroFrame)
         self.pom_minutes.insert(0, '000')
         self.pom_minutes_label = ttk.Label(self.PomodoroFrame, text='mins.')
         self.pom_start = ttk.Button(self.PomodoroFrame, text='⏯')
         self.pom_progress_bar = ttk.Progressbar(self.PomodoroFrame)
 
-        # =========================================
+        # ===============================================================
         # ###To-Do List
-        # =========================================
+        # ===============================================================
         self.to_do_top = ttk.LabelFrame(self.ToDoListFrame, text='Tasks', labelanchor='n')
         self.to_do_bottom = ttk.LabelFrame(self.ToDoListFrame, text='Reminders', labelanchor='n')
 
+        # TreeView Styling
+        # ================================
+        style.map('Treeview',
+                  background=[('selected', '#0080FF')])
+
         # Top Frame
-        self.TitleLabel = ttk.Label(self.to_do_top, text='Title:', foreground="light blue", font=("Arial", 12), width=18)
+        # ================================
+        self.TitleLabel = ttk.Label(self.to_do_top, text='Title:', foreground="light blue", font=("Arial", 12),
+                                    width=18)
         self.TitleEntry = ttk.Entry(self.to_do_top)
 
         self.DateLabel = ttk.Label(self.to_do_top, text='Date:', foreground="light blue", font=("Arial", 12), width=18)
         self.DateEntry = ttk.Entry(self.to_do_top)
-        self.DateEntry.insert(0,'mm/dd/yyyy')
+        self.DateEntry.insert(0, 'mm/dd/yyyy')
 
         self.TimeLabel = ttk.Label(self.to_do_top, text='Time:', foreground="light blue", font=("Arial", 12), width=18)
         self.TimeEntry = ttk.Entry(self.to_do_top)
         self.TimeEntry.insert(0, 'hh:mm')
 
         self.DescLabel = ttk.Label(self.to_do_top, text='Description:', foreground="light blue", font=("Arial", 12),
-                              width=18)
+                                   width=18)
         self.DescEntry = scrolledtext.ScrolledText(self.to_do_top,
                                                    wrap=tk.WORD,
                                                    undo=True,
@@ -125,67 +142,97 @@ class Clock_Scheduler(tk.Tk):
         self.EntryButton = ttk.Button(self.to_do_top, text='Submit')
         self.DeleteButton = ttk.Button(self.to_do_top, text='Delete')
         self.EditButton = ttk.Button(self.to_do_top, text='✎')
+        # ####### Add the Scrollbar
+        self.Schedule_scrollbar = ttk.Scrollbar(self.to_do_top)
+        # ####### Add the Treeview
+        self.Schedule = ttk.Treeview(self.to_do_top, yscrollcommand=self.Schedule_scrollbar.set, selectmode='extended')
+        self.Schedule_scrollbar.config(command=self.Schedule.yview)
+        self.Schedule.tag_configure('oddrow', background="darkgray")
+        self.Schedule.tag_configure('evenrow', background="lightgray")
 
-        self.Schedule = ttk.Treeview(self.to_do_top)
-        self.Schedule['columns'] = ("Title", "Date", "Time", "Description")
+        # #######Define Columns
+        self.Schedule['columns'] = self.config['OPTIONS']['Schedule_Columns']
 
         # #######Format Columns
-        self.Schedule.column("#0", width=120, minwidth=10)
-        self.Schedule.column("Title", width=120, minwidth=10)
-        self.Schedule.column("Date", width=120, minwidth=10)
-        self.Schedule.column("Time", width=120, minwidth=10)
-        self.Schedule.column("Description", width=120, minwidth=10)
+        self.Schedule.column('#0', width=0, stretch=NO)
+        self.Schedule.column('ID', width=25, stretch=NO)
+        self.Schedule.column('Title', width=120, minwidth=10)
+        self.Schedule.column('Date', width=120, minwidth=10)
+        self.Schedule.column('Time', width=120, minwidth=10)
+        self.Schedule.column('Description', width=300, minwidth=10)
 
         # #######Add column headers
-        self.Schedule.heading('#0', text='blank', anchor=CENTER)
+        # self.Schedule.heading('#0', text='blank', anchor=CENTER)
+        self.Schedule.heading('ID', text='ID', anchor=CENTER)
         self.Schedule.heading('Title', text='Title', anchor=CENTER)
         self.Schedule.heading('Date', text='Date', anchor=CENTER)
         self.Schedule.heading('Time', text='Time', anchor=CENTER)
         self.Schedule.heading('Description', text='Description', anchor=CENTER)
 
+        # ================================
+
         # Bottom Frame
+        # ================================
         self.TitleLabel_b = ttk.Label(self.to_do_bottom, text='Title:', foreground="light blue", font=("Arial", 12),
-                                    width=18)
+                                      width=18)
         self.TitleEntry_b = ttk.Entry(self.to_do_bottom)
 
-        self.DateLabel_b = ttk.Label(self.to_do_bottom, text='Date:', foreground="light blue", font=("Arial", 12), width=18)
+        self.DateLabel_b = ttk.Label(self.to_do_bottom, text='Date:', foreground="light blue", font=("Arial", 12),
+                                     width=18)
         self.DateEntry_b = ttk.Entry(self.to_do_bottom)
         self.DateEntry_b.insert(0, 'mm/dd/yyyy')
 
-        self.TimeLabel_b = ttk.Label(self.to_do_bottom, text='Time:', foreground="light blue", font=("Arial", 12), width=18)
+        self.TimeLabel_b = ttk.Label(self.to_do_bottom, text='Time:', foreground="light blue", font=("Arial", 12),
+                                     width=18)
         self.TimeEntry_b = ttk.Entry(self.to_do_bottom)
         self.TimeEntry_b.insert(0, 'hh:mm')
 
-        self.DescLabel_b = ttk.Label(self.to_do_bottom, text='Description:', foreground="light blue", font=("Arial", 12),
-                                   width=18)
+        self.DescLabel_b = ttk.Label(self.to_do_bottom, text='Description:', foreground="light blue",
+                                     font=("Arial", 12),
+                                     width=18)
         self.DescEntry_b = scrolledtext.ScrolledText(self.to_do_bottom,
-                                                   wrap=tk.WORD,
-                                                   undo=True,
-                                                   maxundo=-1,
-                                                   autoseparators=True,
-                                                   width=5,
-                                                   height=5,
-                                                   font=('Arial', 12))
+                                                     wrap=tk.WORD,
+                                                     undo=True,
+                                                     maxundo=-1,
+                                                     autoseparators=True,
+                                                     width=5,
+                                                     height=5,
+                                                     font=('Arial', 12))
         self.EntryButton_b = ttk.Button(self.to_do_bottom, text='Submit')
         self.DeleteButton_b = ttk.Button(self.to_do_bottom, text='Delete')
         self.EditButton_b = ttk.Button(self.to_do_bottom, text='✎')
 
-        self.Schedule_b = ttk.Treeview(self.to_do_bottom)
-        self.Schedule_b['columns'] = ("Title", "Date", "Time", "Description")
+        # ####### Add the Scrollbar
+        self.Schedule_b_scrollbar = ttk.Scrollbar(self.to_do_bottom)
+
+        # ####### Add the Treeview
+        self.Schedule_b = ttk.Treeview(self.to_do_bottom, yscrollcommand=self.Schedule_b_scrollbar.set,
+                                       selectmode='extended')
+        self.Schedule_b_scrollbar.config(command=self.Schedule_b.yview)
+        #self.Schedule_b.tag_configure('oddrow', background="darkgray")
+        #self.Schedule_b.tag_configure('evenrow', background="lightgray")
+
+        # #######Define Columns
+        self.Schedule_b['columns'] = self.config['OPTIONS']['Schedule_Columns']
 
         # #######Format Columns
-        self.Schedule_b.column("#0", width=120, minwidth=10)
+        self.Schedule_b.column("#0", width=0, stretch=NO)
+        self.Schedule_b.column('ID', width=25, stretch=NO)
         self.Schedule_b.column("Title", width=120, minwidth=10)
         self.Schedule_b.column("Date", width=120, minwidth=10)
         self.Schedule_b.column("Time", width=120, minwidth=10)
-        self.Schedule_b.column("Description", width=120, minwidth=10)
+        self.Schedule_b.column("Description", width=300, minwidth=10)
 
         # #######Add column headers
-        self.Schedule_b.heading('#0', text='blank', anchor=CENTER)
+        # self.Schedule_b.heading('#0', text='blank', anchor=CENTER)
+        self.Schedule_b.heading('ID', text='ID', anchor=CENTER)
         self.Schedule_b.heading('Title', text='Title', anchor=CENTER)
         self.Schedule_b.heading('Date', text='Date', anchor=CENTER)
         self.Schedule_b.heading('Time', text='Time', anchor=CENTER)
         self.Schedule_b.heading('Description', text='Description', anchor=CENTER)
+
+        # ================================
+        self.load_Data()
 
         # =========================================
         # ###Message frame
@@ -238,10 +285,10 @@ class Clock_Scheduler(tk.Tk):
         # To-Do Frame
         self.ToDoListFrame.grid(column=1, row=0, columnspan=2, rowspan=7, padx=self.padding, pady=self.padding,
                                 sticky='NS' + 'EW')
-        self.to_do_top.grid(column=0,row=0, padx=self.padding, pady=self.padding,
-                                sticky='NS' + 'EW')
-        self.to_do_bottom.grid(column=0,row=1, padx=self.padding, pady=self.padding,
-                                sticky='NS' + 'EW')
+        self.to_do_top.grid(column=0, row=0, padx=self.padding, pady=self.padding,
+                            sticky='NS' + 'EW')
+        self.to_do_bottom.grid(column=0, row=1, padx=self.padding, pady=self.padding,
+                               sticky='NS' + 'EW')
 
         # ###Top
         self.TitleLabel.grid(column=0, row=0, columnspan=3, padx=self.padding, pady=self.padding, sticky='NSWE')
@@ -256,6 +303,7 @@ class Clock_Scheduler(tk.Tk):
         self.DeleteButton.grid(column=1, row=8, padx=self.padding, pady=self.padding, sticky='N' + 'W')
         self.EditButton.grid(column=2, row=8, padx=self.padding, pady=self.padding, sticky='N' + 'W')
         self.Schedule.grid(column=3, row=0, rowspan=14, padx=self.padding, pady=self.padding, sticky='NS')
+        self.Schedule_scrollbar.grid(column=4, row=0, rowspan=14, padx=self.padding, pady=self.padding, sticky='NS')
 
         # ###Bottom
         self.TitleLabel_b.grid(column=0, row=0, columnspan=3, padx=self.padding, pady=self.padding, sticky='NSWE')
@@ -270,11 +318,12 @@ class Clock_Scheduler(tk.Tk):
         self.DeleteButton_b.grid(column=1, row=8, padx=self.padding, pady=self.padding, sticky='N' + 'W')
         self.EditButton_b.grid(column=2, row=8, padx=self.padding, pady=self.padding, sticky='N' + 'W')
         self.Schedule_b.grid(column=3, row=0, rowspan=14, padx=self.padding, pady=self.padding, sticky='NS')
-
+        self.Schedule_b_scrollbar.grid(column=4, row=0, rowspan=14, padx=self.padding, pady=self.padding, sticky='NS')
 
         # Message Frame
-        self.MessageFrame.grid(column=0, row=8, columnspan=2,padx=self.padding, pady=self.padding, sticky='EW')
-        self.messageLabel.grid(column=0, row=0, columnspan=2,padx=self.padding, pady=self.padding, sticky='EW')
+        self.MessageFrame.grid(column=0, row=8, columnspan=2, padx=self.padding, pady=self.padding, sticky='EW')
+        self.messageLabel.grid(column=0, row=0, columnspan=2, padx=self.padding, pady=self.padding, sticky='EW')
+
     def time(self):
         self.date_String = strftime('%m/%d/%Y')
         self.string = strftime('%I:%M:%S %p')
@@ -335,8 +384,6 @@ class Clock_Scheduler(tk.Tk):
             self.ten_sec_button['state'] = tk.NORMAL
             self.fifteen_sec_button['state'] = tk.NORMAL
 
-
-
     def updateTimer(self, remaining_seconds):
         if self.TimerStatus == True:
             if remaining_seconds > 0:
@@ -361,7 +408,6 @@ class Clock_Scheduler(tk.Tk):
         self.minutes_field.delete(0, END)
         self.minutes_field.insert(0, self.minutes)
 
-
     def addTen(self):
         # In Minutes
         self.minutes = str(int(self.minutes_field.get()) + 10)
@@ -385,7 +431,7 @@ class Clock_Scheduler(tk.Tk):
 
     def startPomodoro(self):
         if self.PomodoroStatus == False:
-            self.pom_Total_Seconds = (int(self.pom_minutes)*60)
+            self.pom_Total_Seconds = (int(self.pom_minutes) * 60)
 
             self.updatePomodoro(self.pom_Total_Seconds)
 
@@ -394,7 +440,7 @@ class Clock_Scheduler(tk.Tk):
             self.PomodoroStatus = False
             pass
 
-    def updatePomodoro(self,remaining_seconds):
+    def updatePomodoro(self, remaining_seconds):
         if self.PomodoroStatus == True:
             if remaining_seconds > 0:
                 self.hours_field.delete(0, END)
@@ -413,7 +459,19 @@ class Clock_Scheduler(tk.Tk):
             self.pom_minutes.delete(0, END)
             self.pom_minutes.insert(0, str(int((remaining_seconds % 3600) // 60)).zfill(2))
 
+    def load_Data(self):
+        self.count = 0
+        for record in self.Test_Data:
+            if self.count % 2 == 0:
+                self.Schedule.insert(parent='', index='end', iid=str(self.count), text='',values=(record[0], record[1], record[2], record[3], record[4]), tags=('evenrow',))
 
+                self.Schedule_b.insert(parent='', index='end', iid=str(self.count), text='',values=(record[0], record[1], record[2], record[3], record[4]), tags=('evenrow',))
+
+            else:
+                self.Schedule.insert(parent='', index='end', iid=str(self.count), text='',values=(record[0], record[1], record[2], record[3], record[4]), tags=('oddrow',))
+
+                self.Schedule_b.insert(parent='', index='end', iid=str(self.count), text='',values=(record[0], record[1], record[2], record[3], record[4]), tags=('oddrow',))
+            self.count += 1
 
 
 
