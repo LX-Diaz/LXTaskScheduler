@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../LXMasterTool/.idea/LXMasterTool.iml" filepath="$PROJECT_DIR$/../LXMasterTool/.idea/LXMasterTool.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/LXTaskScheduler.iml" filepath="$PROJECT_DIR$/.idea/LXTaskScheduler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../ML/.idea/ML.iml" filepath="$PROJECT_DIR$/../../ML/.idea/ML.iml" />
     </modules>
   </component>
 </project>

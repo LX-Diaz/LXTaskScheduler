@@ -17,7 +17,8 @@ import twilio
 import openpyxl
 import smtplib
 import sys
-from Modules import weather
+from Modules import weather, dataManager
+import textwrap
 
 
 class Clock_Scheduler(tk.Tk):
@@ -34,10 +35,6 @@ class Clock_Scheduler(tk.Tk):
         self.total_seconds = tk.IntVar()
         self.TimerStatus = False
         self.PomodoroStatus = False
-        self.Test_Data = [[1, "Catch up on account", "12/21/23", "9:00 pm.",
-                           "Make sure to close the account for November and update December"],
-                          [2, "Ultra-scan appointment", "12/21/23", "9:00 pm.",
-                           "Find out when your appointment is scheduled for."]]
 
         # Create Main Window
         self.resizable(False, False)
@@ -52,7 +49,10 @@ class Clock_Scheduler(tk.Tk):
 
         # Initiate external classes/modules and run necessary functions
         self.weather = weather.WeatherData()
+        self.DM = dataManager.Data_Manager()
         #self.load_Data(self.config['OPTIONS']['data'])
+        self.itemCount = 0
+        self.itemCount_b = 0
 
 
         # Define Frames
@@ -139,7 +139,7 @@ class Clock_Scheduler(tk.Tk):
                                                    width=5,
                                                    height=5,
                                                    font=('Arial', 12))
-        self.EntryButton = ttk.Button(self.to_do_top, text='Submit')
+        self.EntryButton = ttk.Button(self.to_do_top, text='Submit',  command=self.submitTask)
         self.DeleteButton = ttk.Button(self.to_do_top, text='Delete')
         self.EditButton = ttk.Button(self.to_do_top, text='✎')
         # ####### Add the Scrollbar
@@ -159,7 +159,6 @@ class Clock_Scheduler(tk.Tk):
         self.Schedule.column('Title', width=120, minwidth=10)
         self.Schedule.column('Date', width=120, minwidth=10)
         self.Schedule.column('Time', width=120, minwidth=10)
-        self.Schedule.column('Description', width=300, minwidth=10)
 
         # #######Add column headers
         # self.Schedule.heading('#0', text='blank', anchor=CENTER)
@@ -167,7 +166,6 @@ class Clock_Scheduler(tk.Tk):
         self.Schedule.heading('Title', text='Title', anchor=CENTER)
         self.Schedule.heading('Date', text='Date', anchor=CENTER)
         self.Schedule.heading('Time', text='Time', anchor=CENTER)
-        self.Schedule.heading('Description', text='Description', anchor=CENTER)
 
         # ================================
 
@@ -198,7 +196,7 @@ class Clock_Scheduler(tk.Tk):
                                                      width=5,
                                                      height=5,
                                                      font=('Arial', 12))
-        self.EntryButton_b = ttk.Button(self.to_do_bottom, text='Submit')
+        self.EntryButton_b = ttk.Button(self.to_do_bottom, text='Submit', command=self.submitReminder)
         self.DeleteButton_b = ttk.Button(self.to_do_bottom, text='Delete')
         self.EditButton_b = ttk.Button(self.to_do_bottom, text='✎')
 
@@ -221,7 +219,7 @@ class Clock_Scheduler(tk.Tk):
         self.Schedule_b.column("Title", width=120, minwidth=10)
         self.Schedule_b.column("Date", width=120, minwidth=10)
         self.Schedule_b.column("Time", width=120, minwidth=10)
-        self.Schedule_b.column("Description", width=300, minwidth=10)
+        # self.Schedule_b.column("Description", width=300, minwidth=10)
 
         # #######Add column headers
         # self.Schedule_b.heading('#0', text='blank', anchor=CENTER)
@@ -229,10 +227,10 @@ class Clock_Scheduler(tk.Tk):
         self.Schedule_b.heading('Title', text='Title', anchor=CENTER)
         self.Schedule_b.heading('Date', text='Date', anchor=CENTER)
         self.Schedule_b.heading('Time', text='Time', anchor=CENTER)
-        self.Schedule_b.heading('Description', text='Description', anchor=CENTER)
+        # self.Schedule_b.heading('Description', text='Description', anchor=CENTER)
 
         # ================================
-        self.load_Data()
+        #self.load_Data()
 
         # =========================================
         # ###Message frame
@@ -459,21 +457,64 @@ class Clock_Scheduler(tk.Tk):
             self.pom_minutes.delete(0, END)
             self.pom_minutes.insert(0, str(int((remaining_seconds % 3600) // 60)).zfill(2))
 
+    def wrap(self, string, length=40):
+        return '\n'.join(textwrap.wrap(string,length))
     def load_Data(self):
         self.count = 0
         for record in self.Test_Data:
             if self.count % 2 == 0:
-                self.Schedule.insert(parent='', index='end', iid=str(self.count), text='',values=(record[0], record[1], record[2], record[3], record[4]), tags=('evenrow',))
+                self.Schedule.insert(parent='', index='end', iid=str(self.count), text='',values=(record[0], record[1], record[2], record[3]), tags=('evenrow',))
 
-                self.Schedule_b.insert(parent='', index='end', iid=str(self.count), text='',values=(record[0], record[1], record[2], record[3], record[4]), tags=('evenrow',))
+                self.Schedule_b.insert(parent='', index='end', iid=str(self.count), text='',values=(record[0], record[1], record[2], record[3]), tags=('evenrow',))
 
             else:
-                self.Schedule.insert(parent='', index='end', iid=str(self.count), text='',values=(record[0], record[1], record[2], record[3], record[4]), tags=('oddrow',))
+                self.Schedule.insert(parent='', index='end', iid=str(self.count), text='',values=(record[0], record[1], record[2], record[3]), tags=('oddrow',))
 
-                self.Schedule_b.insert(parent='', index='end', iid=str(self.count), text='',values=(record[0], record[1], record[2], record[3], record[4]), tags=('oddrow',))
+                self.Schedule_b.insert(parent='', index='end', iid=str(self.count), text='',values=(record[0], record[1], record[2], record[3]), tags=('oddrow',))
             self.count += 1
 
+    def submitTask(self):
+        self.taskTitle = self.TitleEntry.get()
+        self.taskDate = self.DateEntry.get()
+        self.taskTime = self.TimeEntry.get()
+        self.taskDescription = self.DescEntry.get(1.0, END)
+        if self.itemCount % 2 == 0:
+            self.Schedule.insert(parent='', index='end', iid=str(self.itemCount), text='',
+                                 values=(str(self.itemCount), str(self.taskTitle), str(self.taskDate), str(self.taskTime)),
+                                 tags=('evenrow',))
+        else:
+            self.Schedule.insert(parent='', index='end', iid=str(self.itemCount), text='',
+                                 values=(str(self.itemCount), str(self.taskTitle), str(self.taskDate), str(self.taskTime)), tags=('oddrow',))
+        self.itemCount += 1
 
+    def deleteTask(self):
+        pass
+
+    def editTask(self):
+        pass
+
+    def submitReminder(self):
+        self.reminderTitle = self.TitleEntry_b.get()
+        self.reminderDate = self.DateEntry_b.get()
+        self.reminderTime = self.TimeEntry_b.get()
+        self.reminderDescription = self.DescEntry_b.get(1.0, END)
+        if self.itemCount_b % 2 == 0:
+            self.Schedule_b.insert(parent='', index='end', iid=str(self.itemCount_b), text='',
+                                 values=(
+                                 str(self.itemCount_b), str(self.reminderTitle), str(self.reminderDate), str(self.reminderTime)),
+                                 tags=('evenrow',))
+        else:
+            self.Schedule_b.insert(parent='', index='end', iid=str(self.itemCount_b), text='',
+                                 values=(
+                                 str(self.itemCount_b), str(self.reminderTitle), str(self.reminderDate), str(self.reminderTime)),
+                                 tags=('oddrow',))
+        self.itemCount_b += 1
+
+    def deleteReminder(self):
+        pass
+
+    def editReminder(self):
+        pass
 
 if __name__ == '__main__':
     app = Clock_Scheduler()
