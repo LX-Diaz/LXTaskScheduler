@@ -41,7 +41,7 @@ class Clock_Scheduler(tk.Tk):
         self.attributes('-fullscreen', False)
         self.grid_columnconfigure(7, weight=3)
         self.grid_rowconfigure(7, weight=3)
-        self.title('LX_Clock')
+        self.title('LX_Assistant')
 
         # Set the Style of the app
         sv_ttk.set_theme(self.config['OPTIONS']['theme'])

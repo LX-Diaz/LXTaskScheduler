@@ -11,7 +11,7 @@ class Data_Manager():
         # Create a cursor instance
         self.tc = self.task_conn.cursor()
         self.rc = self.remind_conn.cursor()
-
+    def create_Databases(self):
         # Create table
         self.tc.execute("""CREATE TABLE if not exists tasks (
                 ID integer,
@@ -36,16 +36,16 @@ class Data_Manager():
         self.remind_conn.close()
 
         # Test Data
-        self.Test_Data = [[1, "Catch up on account", "12/21/23", "9:00 pm.",
-                           "Make sure to close the account for November and update December"],
-                          [2, "Ultra-scan appointment", "12/21/23", "9:00 pm.",
-                           "Find out when your appointment is scheduled for."]]
+        # self.Test_Data = [[1, "Catch up on account", "12/21/23", "9:00 pm.",
+        #                    "Make sure to close the account for November and update December"],
+        #                   [2, "Ultra-scan appointment", "12/21/23", "9:00 pm.",
+        #                    "Find out when your appointment is scheduled for."]]
 
     def update_task_database(self, entry_id, title, date, time, desc):
         self.tc.execute("INSERT INTO tasks VALUES (:ID, Title, Date, Time, Description",
                         {'id': entry_id,
                          'Title': title,
-                         'Date': date,
+                         'Date': date,  
                          'Time': time,
                          'Description': desc
                          })
