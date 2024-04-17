@@ -9,16 +9,16 @@ import tkinter as tk
 from tkinter import ttk, scrolledtext
 from tkinter import *
 from tkinter.ttk import *
+import textwrap
 import sv_ttk
-from winsound import *
 from time import *
 import configparser
+from winsound import *
 import twilio
-import openpyxl
 import smtplib
 import sys
-from Modules import weather, dataManager
-import textwrap
+
+from Modules import weather, DataManager, ReminderManager
 
 
 class Clock_Scheduler(tk.Tk):
@@ -26,10 +26,14 @@ class Clock_Scheduler(tk.Tk):
         super().__init__()
         self.minutes = None
         self.padding = 5
+        self.itemIndex = 0
         # Initialize imported Classes and instantiate variables
         self.config = configparser.ConfigParser()
         self.config.read('config.ini')
         self.log = open('log.txt', 'a')
+        # self.remind = ReminderManager.ReminderManager()
+        self.weather = weather.WeatherData()
+        self.DM = DataManager.Data_Manager()
 
         # Create program variables
         self.total_seconds = tk.IntVar()
@@ -47,17 +51,9 @@ class Clock_Scheduler(tk.Tk):
         sv_ttk.set_theme(self.config['OPTIONS']['theme'])
         style = ttk.Style()
 
-        # Initiate external classes/modules and run necessary functions
-        self.weather = weather.WeatherData()
-        self.DM = dataManager.Data_Manager()
-        #self.load_Data(self.config['OPTIONS']['data'])
-        self.itemCount = 0
-        self.itemCount_b = 0
-
-
         # Define Frames
         self.ClockFrame = ttk.LabelFrame(self, text='Time and Date')
-        self.ToDoListFrame = ttk.LabelFrame(self, text='To-Do')
+        self.ToDoListFrame = ttk.Frame(self)
         self.TimerFrame = ttk.LabelFrame(self, text='Timer')
         self.PomodoroFrame = ttk.LabelFrame(self, text='Pomodoro')
         self.MessageFrame = ttk.Frame(self)
@@ -107,8 +103,7 @@ class Clock_Scheduler(tk.Tk):
         # ===============================================================
         # ###To-Do List
         # ===============================================================
-        self.to_do_top = ttk.LabelFrame(self.ToDoListFrame, text='Tasks', labelanchor='n')
-        self.to_do_bottom = ttk.LabelFrame(self.ToDoListFrame, text='Reminders', labelanchor='n')
+        self.to_do_top = ttk.LabelFrame(self.ToDoListFrame, text='Reminders', labelanchor='n')
 
         # TreeView Styling
         # ================================
@@ -121,13 +116,15 @@ class Clock_Scheduler(tk.Tk):
                                     width=18)
         self.TitleEntry = ttk.Entry(self.to_do_top)
 
-        self.DateLabel = ttk.Label(self.to_do_top, text='Date:', foreground="light blue", font=("Arial", 12), width=18)
-        self.DateEntry = ttk.Entry(self.to_do_top)
-        self.DateEntry.insert(0, 'mm/dd/yyyy')
-
-        self.TimeLabel = ttk.Label(self.to_do_top, text='Time:', foreground="light blue", font=("Arial", 12), width=18)
+        self.TimeLabel = ttk.Label(self.to_do_top, text='Time (mins.):', foreground="light blue", font=("Arial", 12),
+                                   width=18)
         self.TimeEntry = ttk.Entry(self.to_do_top)
-        self.TimeEntry.insert(0, 'hh:mm')
+        self.TimeEntry.insert(0, '00')
+
+        self.Priority = ttk.Label(self.to_do_top, text='Priority:', foreground="light blue", font=("Arial", 12),
+                                  width=18)
+        self.PriorityEntry = ttk.Entry(self.to_do_top)
+        self.PriorityEntry.insert(0, '01')
 
         self.DescLabel = ttk.Label(self.to_do_top, text='Description:', foreground="light blue", font=("Arial", 12),
                                    width=18)
@@ -139,98 +136,33 @@ class Clock_Scheduler(tk.Tk):
                                                    width=5,
                                                    height=5,
                                                    font=('Arial', 12))
-        self.EntryButton = ttk.Button(self.to_do_top, text='Submit',  command=self.submitTask)
-        self.DeleteButton = ttk.Button(self.to_do_top, text='Delete')
-        self.EditButton = ttk.Button(self.to_do_top, text='✎')
+        self.EntryButton = ttk.Button(self.to_do_top, text='Submit', command=self.submitReminder)
+        self.DeleteButton = ttk.Button(self.to_do_top, text='Delete', command=self.deleteReminder)
+        self.RefreshDataButton = ttk.Button(self.to_do_top, text="↻", command=self.load_Data)
         # ####### Add the Scrollbar
         self.Schedule_scrollbar = ttk.Scrollbar(self.to_do_top)
         # ####### Add the Treeview
         self.Schedule = ttk.Treeview(self.to_do_top, yscrollcommand=self.Schedule_scrollbar.set, selectmode='extended')
         self.Schedule_scrollbar.config(command=self.Schedule.yview)
-        self.Schedule.tag_configure('oddrow', background="darkgray")
-        self.Schedule.tag_configure('evenrow', background="lightgray")
+        self.Schedule.tag_configure('oddrow', foreground='black', background="darkgray")
+        self.Schedule.tag_configure('evenrow', foreground='black', background="lightgray")
 
         # #######Define Columns
-        self.Schedule['columns'] = self.config['OPTIONS']['Schedule_Columns']
-
+        # self.Schedule['columns'] = self.config['OPTIONS']['Schedule_Columns']
+        self.Schedule['columns'] = ("ID", "Title", "Time", "Priority")
         # #######Format Columns
         self.Schedule.column('#0', width=0, stretch=NO)
         self.Schedule.column('ID', width=25, stretch=NO)
         self.Schedule.column('Title', width=120, minwidth=10)
-        self.Schedule.column('Date', width=120, minwidth=10)
         self.Schedule.column('Time', width=120, minwidth=10)
+        self.Schedule.column('Priority', width=120, minwidth=10)
 
         # #######Add column headers
         # self.Schedule.heading('#0', text='blank', anchor=CENTER)
         self.Schedule.heading('ID', text='ID', anchor=CENTER)
         self.Schedule.heading('Title', text='Title', anchor=CENTER)
-        self.Schedule.heading('Date', text='Date', anchor=CENTER)
         self.Schedule.heading('Time', text='Time', anchor=CENTER)
-
-        # ================================
-
-        # Bottom Frame
-        # ================================
-        self.TitleLabel_b = ttk.Label(self.to_do_bottom, text='Title:', foreground="light blue", font=("Arial", 12),
-                                      width=18)
-        self.TitleEntry_b = ttk.Entry(self.to_do_bottom)
-
-        self.DateLabel_b = ttk.Label(self.to_do_bottom, text='Date:', foreground="light blue", font=("Arial", 12),
-                                     width=18)
-        self.DateEntry_b = ttk.Entry(self.to_do_bottom)
-        self.DateEntry_b.insert(0, 'mm/dd/yyyy')
-
-        self.TimeLabel_b = ttk.Label(self.to_do_bottom, text='Time:', foreground="light blue", font=("Arial", 12),
-                                     width=18)
-        self.TimeEntry_b = ttk.Entry(self.to_do_bottom)
-        self.TimeEntry_b.insert(0, 'hh:mm')
-
-        self.DescLabel_b = ttk.Label(self.to_do_bottom, text='Description:', foreground="light blue",
-                                     font=("Arial", 12),
-                                     width=18)
-        self.DescEntry_b = scrolledtext.ScrolledText(self.to_do_bottom,
-                                                     wrap=tk.WORD,
-                                                     undo=True,
-                                                     maxundo=-1,
-                                                     autoseparators=True,
-                                                     width=5,
-                                                     height=5,
-                                                     font=('Arial', 12))
-        self.EntryButton_b = ttk.Button(self.to_do_bottom, text='Submit', command=self.submitReminder)
-        self.DeleteButton_b = ttk.Button(self.to_do_bottom, text='Delete')
-        self.EditButton_b = ttk.Button(self.to_do_bottom, text='✎')
-
-        # ####### Add the Scrollbar
-        self.Schedule_b_scrollbar = ttk.Scrollbar(self.to_do_bottom)
-
-        # ####### Add the Treeview
-        self.Schedule_b = ttk.Treeview(self.to_do_bottom, yscrollcommand=self.Schedule_b_scrollbar.set,
-                                       selectmode='extended')
-        self.Schedule_b_scrollbar.config(command=self.Schedule_b.yview)
-        #self.Schedule_b.tag_configure('oddrow', background="darkgray")
-        #self.Schedule_b.tag_configure('evenrow', background="lightgray")
-
-        # #######Define Columns
-        self.Schedule_b['columns'] = self.config['OPTIONS']['Schedule_Columns']
-
-        # #######Format Columns
-        self.Schedule_b.column("#0", width=0, stretch=NO)
-        self.Schedule_b.column('ID', width=25, stretch=NO)
-        self.Schedule_b.column("Title", width=120, minwidth=10)
-        self.Schedule_b.column("Date", width=120, minwidth=10)
-        self.Schedule_b.column("Time", width=120, minwidth=10)
-        # self.Schedule_b.column("Description", width=300, minwidth=10)
-
-        # #######Add column headers
-        # self.Schedule_b.heading('#0', text='blank', anchor=CENTER)
-        self.Schedule_b.heading('ID', text='ID', anchor=CENTER)
-        self.Schedule_b.heading('Title', text='Title', anchor=CENTER)
-        self.Schedule_b.heading('Date', text='Date', anchor=CENTER)
-        self.Schedule_b.heading('Time', text='Time', anchor=CENTER)
-        # self.Schedule_b.heading('Description', text='Description', anchor=CENTER)
-
-        # ================================
-        #self.load_Data()
+        self.Schedule.heading('Priority', text='Priority', anchor=CENTER)
 
         # =========================================
         # ###Message frame
@@ -285,43 +217,29 @@ class Clock_Scheduler(tk.Tk):
                                 sticky='NS' + 'EW')
         self.to_do_top.grid(column=0, row=0, padx=self.padding, pady=self.padding,
                             sticky='NS' + 'EW')
-        self.to_do_bottom.grid(column=0, row=1, padx=self.padding, pady=self.padding,
-                               sticky='NS' + 'EW')
 
         # ###Top
         self.TitleLabel.grid(column=0, row=0, columnspan=3, padx=self.padding, pady=self.padding, sticky='NSWE')
         self.TitleEntry.grid(column=0, row=1, columnspan=3, padx=self.padding, pady=self.padding, sticky='NSWE')
-        self.DateLabel.grid(column=0, row=2, columnspan=3, padx=self.padding, pady=self.padding, sticky='NSWE')
-        self.DateEntry.grid(column=0, row=3, columnspan=3, padx=self.padding, pady=self.padding, sticky='NSWE')
-        self.TimeLabel.grid(column=0, row=4, columnspan=3, padx=self.padding, pady=self.padding, sticky='NSWE')
-        self.TimeEntry.grid(column=0, row=5, columnspan=3, padx=self.padding, pady=self.padding, sticky='NSWE')
+        self.TimeLabel.grid(column=0, row=2, columnspan=3, padx=self.padding, pady=self.padding, sticky='NSWE')
+        self.TimeEntry.grid(column=0, row=3, columnspan=3, padx=self.padding, pady=self.padding, sticky='NSWE')
+        self.Priority.grid(column=0, row=4, columnspan=3, padx=self.padding, pady=self.padding, sticky='NSWE')
+        self.PriorityEntry.grid(column=0, row=5, columnspan=3, padx=self.padding, pady=self.padding, sticky='NSWE')
         self.DescLabel.grid(column=0, row=6, columnspan=3, padx=self.padding, pady=self.padding, sticky='N' + 'EW')
         self.DescEntry.grid(column=0, row=7, columnspan=3, padx=self.padding, pady=self.padding, sticky='N' + 'EW')
         self.EntryButton.grid(column=0, row=8, padx=self.padding, pady=self.padding, sticky='N' + 'W')
         self.DeleteButton.grid(column=1, row=8, padx=self.padding, pady=self.padding, sticky='N' + 'W')
-        self.EditButton.grid(column=2, row=8, padx=self.padding, pady=self.padding, sticky='N' + 'W')
+        self.RefreshDataButton.grid(column=2, row=8, padx=self.padding, pady=self.padding, sticky='N' + 'W')
         self.Schedule.grid(column=3, row=0, rowspan=14, padx=self.padding, pady=self.padding, sticky='NS')
         self.Schedule_scrollbar.grid(column=4, row=0, rowspan=14, padx=self.padding, pady=self.padding, sticky='NS')
 
-        # ###Bottom
-        self.TitleLabel_b.grid(column=0, row=0, columnspan=3, padx=self.padding, pady=self.padding, sticky='NSWE')
-        self.TitleEntry_b.grid(column=0, row=1, columnspan=3, padx=self.padding, pady=self.padding, sticky='NSWE')
-        self.DateLabel_b.grid(column=0, row=2, columnspan=3, padx=self.padding, pady=self.padding, sticky='NSWE')
-        self.DateEntry_b.grid(column=0, row=3, columnspan=3, padx=self.padding, pady=self.padding, sticky='NSWE')
-        self.TimeLabel_b.grid(column=0, row=4, columnspan=3, padx=self.padding, pady=self.padding, sticky='NSWE')
-        self.TimeEntry_b.grid(column=0, row=5, columnspan=3, padx=self.padding, pady=self.padding, sticky='NSWE')
-        self.DescLabel_b.grid(column=0, row=6, columnspan=3, padx=self.padding, pady=self.padding, sticky='N' + 'EW')
-        self.DescEntry_b.grid(column=0, row=7, columnspan=3, padx=self.padding, pady=self.padding, sticky='N' + 'EW')
-        self.EntryButton_b.grid(column=0, row=8, padx=self.padding, pady=self.padding, sticky='N' + 'W')
-        self.DeleteButton_b.grid(column=1, row=8, padx=self.padding, pady=self.padding, sticky='N' + 'W')
-        self.EditButton_b.grid(column=2, row=8, padx=self.padding, pady=self.padding, sticky='N' + 'W')
-        self.Schedule_b.grid(column=3, row=0, rowspan=14, padx=self.padding, pady=self.padding, sticky='NS')
-        self.Schedule_b_scrollbar.grid(column=4, row=0, rowspan=14, padx=self.padding, pady=self.padding, sticky='NS')
+        # ====================================================
+        # Load the database data after GUI
+        # ====================================================
+        self.load_Data()
 
-        # Message Frame
-        self.MessageFrame.grid(column=0, row=8, columnspan=2, padx=self.padding, pady=self.padding, sticky='EW')
-        self.messageLabel.grid(column=0, row=0, columnspan=2, padx=self.padding, pady=self.padding, sticky='EW')
-
+    #  Clock and Weather Functions
+    # ====================================================
     def time(self):
         self.date_String = strftime('%m/%d/%Y')
         self.string = strftime('%I:%M:%S %p')
@@ -344,6 +262,8 @@ class Clock_Scheduler(tk.Tk):
             f'{self.date_String} @ {self.string}\n-----------------------------------------------\n Updated weather data:\n{self.weather.data}\n\n')
         self.log.close()
 
+    #  Timer Functions
+    # ====================================================
     def startTimer(self):
         if self.TimerStatus == False:
             try:
@@ -427,6 +347,8 @@ class Clock_Scheduler(tk.Tk):
         self.seconds_field.insert(0, str(0).zfill(2))
         self.progress_bar.stop()
 
+    # Pomodoro Functions
+    # ====================================================
     def startPomodoro(self):
         if self.PomodoroStatus == False:
             self.pom_Total_Seconds = (int(self.pom_minutes) * 60)
@@ -457,64 +379,74 @@ class Clock_Scheduler(tk.Tk):
             self.pom_minutes.delete(0, END)
             self.pom_minutes.insert(0, str(int((remaining_seconds % 3600) // 60)).zfill(2))
 
+    # Reminder Treeview Functions
+    # ====================================================
     def wrap(self, string, length=40):
-        return '\n'.join(textwrap.wrap(string,length))
+        return '\n'.join(textwrap.wrap(string, length))
+
     def load_Data(self):
-        self.count = 0
-        for record in self.Test_Data:
-            if self.count % 2 == 0:
-                self.Schedule.insert(parent='', index='end', iid=str(self.count), text='',values=(record[0], record[1], record[2], record[3]), tags=('evenrow',))
+        self.DM.get_reminder_data()
+        # Clear the Tree view before loading or refreshing the data
+        self.Schedule.delete(*self.Schedule.get_children())
 
-                self.Schedule_b.insert(parent='', index='end', iid=str(self.count), text='',values=(record[0], record[1], record[2], record[3]), tags=('evenrow',))
+        self.itemIndex = 0
+        self.reminderTitle = None
+        self.reminderTime = None
+        self.reminderPriority = None
+        self.reminderDescription = None
+        for record in self.DM.data:
+            print(record)
+            self.itemIndex = record[0]
+            self.reminderTitle = record[1]
+            self.reminderTime = record[2]
+            self.reminderPriority = record[3]
+            self.reminderDescription = record[4]
 
+            if self.itemIndex % 2 == 0:
+                self.Schedule.insert(parent='', index='end', iid=str(self.itemIndex), text='',
+                                     values=(record[0], record[1], record[2], record[3], record[4]), tags=('evenrow',))
             else:
-                self.Schedule.insert(parent='', index='end', iid=str(self.count), text='',values=(record[0], record[1], record[2], record[3]), tags=('oddrow',))
-
-                self.Schedule_b.insert(parent='', index='end', iid=str(self.count), text='',values=(record[0], record[1], record[2], record[3]), tags=('oddrow',))
-            self.count += 1
-
-    def submitTask(self):
-        self.taskTitle = self.TitleEntry.get()
-        self.taskDate = self.DateEntry.get()
-        self.taskTime = self.TimeEntry.get()
-        self.taskDescription = self.DescEntry.get(1.0, END)
-        if self.itemCount % 2 == 0:
-            self.Schedule.insert(parent='', index='end', iid=str(self.itemCount), text='',
-                                 values=(str(self.itemCount), str(self.taskTitle), str(self.taskDate), str(self.taskTime)),
-                                 tags=('evenrow',))
-        else:
-            self.Schedule.insert(parent='', index='end', iid=str(self.itemCount), text='',
-                                 values=(str(self.itemCount), str(self.taskTitle), str(self.taskDate), str(self.taskTime)), tags=('oddrow',))
-        self.itemCount += 1
-
-    def deleteTask(self):
-        pass
-
-    def editTask(self):
-        pass
+                self.Schedule.insert(parent='', index='end', iid=str(self.itemIndex), text='',
+                                     values=(record[0], record[1], record[2], record[3], record[4]), tags=('oddrow',))
 
     def submitReminder(self):
-        self.reminderTitle = self.TitleEntry_b.get()
-        self.reminderDate = self.DateEntry_b.get()
-        self.reminderTime = self.TimeEntry_b.get()
-        self.reminderDescription = self.DescEntry_b.get(1.0, END)
-        if self.itemCount_b % 2 == 0:
-            self.Schedule_b.insert(parent='', index='end', iid=str(self.itemCount_b), text='',
+        self.reminderTitle = self.TitleEntry.get()
+        self.reminderTime = self.TimeEntry.get()
+        self.reminderPriority = self.PriorityEntry.get()
+        self.reminderDescription = self.DescEntry.get(1.0, END)
+        # iid of last item
+        if len(self.Schedule.get_children()) == 0:
+            self.itemIndex = 1
+        else:
+            self.itemIndex = int(self.Schedule.get_children()[-1]) + 1
+
+        self.DM.update_reminder_database(int(self.itemIndex), str(self.reminderTitle), int(self.reminderTime),
+                                         int(self.reminderPriority), str(self.reminderDescription))
+        self.itemIndex = self.DM.row_id
+
+        if self.itemIndex % 2 == 0:
+            self.Schedule.insert('', 'end', iid=str(self.itemIndex), text='',
                                  values=(
-                                 str(self.itemCount_b), str(self.reminderTitle), str(self.reminderDate), str(self.reminderTime)),
+                                     str(self.itemIndex), str(self.reminderTitle), str(self.reminderTime),
+                                     str(self.reminderPriority)),
                                  tags=('evenrow',))
         else:
-            self.Schedule_b.insert(parent='', index='end', iid=str(self.itemCount_b), text='',
+            self.Schedule.insert('', 'end', iid=str(self.itemIndex), text='',
                                  values=(
-                                 str(self.itemCount_b), str(self.reminderTitle), str(self.reminderDate), str(self.reminderTime)),
+                                     str(self.itemIndex), str(self.reminderTitle), str(self.reminderTime),
+                                     str(self.reminderPriority)),
                                  tags=('oddrow',))
-        self.itemCount_b += 1
 
     def deleteReminder(self):
-        pass
+        selection = self.Schedule.selection()[0]
+        for selected_item in selection:
+            self.itemIndex = self.Schedule.item(selected_item)['values'][0]
+            self.DM.delete_reminder_data(int(self.itemIndex))
+            self.Schedule.delete(selected_item)
 
     def editReminder(self):
         pass
+
 
 if __name__ == '__main__':
     app = Clock_Scheduler()
