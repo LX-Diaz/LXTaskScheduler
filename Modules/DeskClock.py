@@ -11,7 +11,7 @@ class DesktopClock(tk.Tk):
         self.date_String = strftime('%m/%d/%Y')
         self.time_string = strftime('%I:%M:%S %p')
 
-        w = 100  # width for the Tk root
+        w = 90  # width for the Tk root
         h = 50  # height for the Tk root
 
         # get screen width and height
