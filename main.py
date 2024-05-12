@@ -18,7 +18,7 @@ import twilio
 import smtplib
 import sys
 
-from Modules import weather, DataManager, ReminderManager
+from Modules import weather, DataManager, ReminderManager, DeskClock
 
 
 class Clock_Scheduler(tk.Tk):
@@ -35,6 +35,7 @@ class Clock_Scheduler(tk.Tk):
         self.weather = weather.WeatherData()
         self.DM = DataManager.Data_Manager()
 
+
         # Create program variables
         self.total_seconds = tk.IntVar()
         self.TimerStatus = False
@@ -50,6 +51,7 @@ class Clock_Scheduler(tk.Tk):
         # Set the Style of the app
         sv_ttk.set_theme(self.config['OPTIONS']['theme'])
         style = ttk.Style()
+        
 
         # Define Frames
         self.ClockFrame = ttk.LabelFrame(self, text='Time and Date')
@@ -72,6 +74,9 @@ class Clock_Scheduler(tk.Tk):
         self.humidity_label = ttk.Label(self.ClockFrame, font=("ds-digital", self.weatherDataFontSize))
         self.time()
         self.weather_data()
+        # Execute additional functions
+        if self.config['OPTIONS']['deskClock'] == 'True':
+            self.DC = DeskClock.DesktopClock()
 
         # ===============================================================
         # ###Timer
@@ -242,10 +247,12 @@ class Clock_Scheduler(tk.Tk):
     # ====================================================
     def time(self):
         self.date_String = strftime('%m/%d/%Y')
-        self.string = strftime('%I:%M:%S %p')
-        self.clock.config(text=self.string)
+        self.time_string = strftime('%I:%M:%S %p')
+        self.clock.config(text=self.time_string)
         self.date.config(text=self.date_String)
         self.clock.after(1000, self.time)
+        return self.date_String, self.time_string
+
 
     def weather_data(self):
         self.wUpdtT = 60000
@@ -259,7 +266,7 @@ class Clock_Scheduler(tk.Tk):
         self.temp_label.after(self.wUpdtT, self.weather_data)
         self.log = open('log.txt', 'a')
         self.log.write(
-            f'{self.date_String} @ {self.string}\n-----------------------------------------------\n Updated weather data:\n{self.weather.data}\n\n')
+            f'{self.date_String} @ {self.time_string}\n-----------------------------------------------\n Updated weather data:\n{self.weather.data}\n\n')
         self.log.close()
 
     #  Timer Functions
